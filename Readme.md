@@ -4,7 +4,7 @@
 Entity1 Patient
 Entity2 "Healthcare Provider" as Provider
 
-rectangle "Healthcare Wellness Portal" {
+ "Healthcare Wellness Portal" {
 
   Patient --> (Register)
   Patient --> (Login)
