@@ -27,3 +27,5 @@ Entity2 "Healthcare Provider" as Provider
   (Manage Profile) <|-- (Update Health Information)
   (View Dashboard) <|-- (Wellness Progress Overview)
 }
+
+
