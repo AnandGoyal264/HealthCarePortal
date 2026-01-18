@@ -1,29 +1,29 @@
-                     UseCase Diagram
-           Healthcare Wellness & Preventive Care Portal
+flowchart TD
+    %% User Types
+    User{User Type} --> PatientRole[Patient]
+    User --> ProviderRole[Healthcare Provider]
 
-Entity1 Patient
-Entity2 "Healthcare Provider" as Provider
+    %% Authentication Flow
+    PatientRole & ProviderRole --> Auth[Secure JWT Login & Consent]
+    Auth --> Session[Role-Based Session Managed] [cite: 32]
 
- "Healthcare Wellness Portal" {
+    %% Patient Flow
+    subgraph Patient_Journey [Patient Dashboard]
+        direction TB
+        P1(Log Daily Activities: Steps/Water) --> P2(Update Health Profile: Meds/Allergies)
+        P2 --> P3(View Wellness Progress)
+        P3 --> P4(View Preventive Reminders)
+    end
+    Session -.-> Patient_Journey [cite: 33, 35, 48]
 
-  Patient --> (Register)
-  Patient --> (Login)
-  Patient --> (View Dashboard)
-  Patient --> (Manage Profile)
-  Patient --> (Set Wellness Goals)
-  Patient --> (Log Daily Activities)
-  Patient --> (View Preventive Reminders)
-  Patient --> (View Public Health Info)
-  Patient --> (Logout)
+    %% Provider Flow
+    subgraph Provider_Journey [Healthcare Provider View]
+        direction TB
+        D1(View Assigned Patient List) --> D2(Review Patient Goals)
+        D2 --> D3(Track Compliance Status)
+    end
+    Session -.-> Provider_Journey [cite: 40, 44]
 
-  Provider --> (Login)
-  Provider --> (View Assigned Patients)
-  Provider --> (View Patient Goals)
-  Provider --> (Track Compliance Status)
-  Provider --> (Review Preventive Checkups)
-  Provider --> (Logout)
-
-  (Login) <|-- (JWT Authentication)
-  (Manage Profile) <|-- (Update Health Information)
-  (View Dashboard) <|-- (Wellness Progress Overview)
-}
+    %% Shared Resources
+    Patient_Journey & Provider_Journey --> Info[Public Health Info Page] [cite: 45]
+    Info --> Logout[Secure Logout]
