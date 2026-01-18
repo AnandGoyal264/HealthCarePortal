@@ -23,6 +23,7 @@ app.use("/api/appointments", appointmentRoutes);
 app.use("/api/health", healthRecordRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/queries", queryRoutes);
+console.log("routes loaaded");
 
 app.use(notFound);
 app.use(errorHandler);
