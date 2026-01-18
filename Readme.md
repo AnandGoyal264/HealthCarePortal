@@ -1,8 +1,8 @@
 usecaseDiagram
 title Healthcare Wellness & Preventive Care Portal
 
-Entity1 Patient
-Entity2 "Healthcare Provider" as Provider
+actor Patient
+actor "Healthcare Provider" as Provider
 
 "Healthcare Wellness Portal" {
 
